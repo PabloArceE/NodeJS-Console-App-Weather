@@ -1,3 +1,4 @@
+require('colors');
 const inquirer = require('inquirer');
 const {
     inquirerMenu,
@@ -5,11 +6,13 @@ const {
     leerInput,
     confirmarSalir
 } = require('./helpers/inquirer');
+const Busquedas = require('./models/busquedas');
 
 const main = async() => {
 
     const init = async() => {
 
+        const busquedas = new Busquedas();
         let opt = null;
 
         do {
@@ -18,7 +21,26 @@ const main = async() => {
     
             switch (opt) {
                 case 1:
-                    console.log('Estas dentro del caso 1');
+                    // mostrar mensaje
+                    const lugar = await leerInput('Ciudad: ');
+                    
+                    await busquedas.ciudad(lugar);
+
+                    // buscar los lugares
+
+                    // seleccionar el lugar
+
+                    // clima
+
+                    // mostrar resultado
+                    console.log('\nInformación de la ciudad\n'.cyan);
+                    console.log('Ciudad: ', );
+                    console.log('Lat: ', );
+                    console.log('Lng: ',);
+                    console.log('Temperatura: ',);
+                    console.log('Mínima: ',);
+                    console.log('Máxima: ','\n');
+                    
                     await pausa();
                     break;                    
                 case 2:
