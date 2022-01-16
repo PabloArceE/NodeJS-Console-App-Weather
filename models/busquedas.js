@@ -4,20 +4,44 @@ class Busquedas {
 
     constructor(){
 
-
     }
+
+    get accessToken(){
+
+        return 'pk.eyJ1IjoicGFibG9hcmNlIiwiYSI6ImNreWhwdnVsNDFsNW4ycWxrdmpvcXA1b2kifQ.DSPOKKZcGQxtdcwKM26xqA'
+    }
+
+    get paramsMapbox(){
+
+        return {
+            'limit': '5',
+            'language': 'es',
+            'access_token': this.accessToken
+        }
+    }
+
 
     async ciudad(lugar){
 
         try {
             
-            const resp = await axios.get('https://reqres.in/api/users?page=2');
-            console.log(resp.data.data[0].email);
+            const instance = axios.create({
+                baseURL: `https://api.mapbox.com/geocoding/v5/mapbox.places/${lugar}.json?`,
+                params: this.paramsMapbox
+            });
+
+            const resp = await instance.get();
+
+            console.log(resp.data);
+
+
+            /* const resp = await axios.get('https://api.mapbox.com/geocoding/v5/mapbox.places/coedoba.json?language=es&access_token=pk.eyJ1IjoicGFibG9hcmNlIiwiYSI6ImNreWhwdnVsNDFsNW4ycWxrdmpvcXA1b2kifQ.DSPOKKZcGQxtdcwKM26xqA');
+            console.log(resp.data); */
     
             return [];
             
         } catch (err) {
-            console.log(err);
+            return [];
         }
 
     }
