@@ -5,18 +5,13 @@ class Busquedas {
     constructor(){
 
     }
-
-    get accessToken(){
-
-        return 'pk.eyJ1IjoicGFibG9hcmNlIiwiYSI6ImNreWhwdnVsNDFsNW4ycWxrdmpvcXA1b2kifQ.DSPOKKZcGQxtdcwKM26xqA'
-    }
-
+   
     get paramsMapbox(){
 
         return {
             'limit': '5',
             'language': 'es',
-            'access_token': this.accessToken
+            'access_token': process.env.MAPBOX_KEY
         }
     }
 

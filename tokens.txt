@@ -1,7 +1,0 @@
-
-
-Token Mapbox
-
-pk.eyJ1IjoicGFibG9hcmNlIiwiYSI6ImNreWhwdnVsNDFsNW4ycWxrdmpvcXA1b2kifQ.DSPOKKZcGQxtdcwKM26xqA
-
-https://api.mapbox.com/geocoding/v5/mapbox.places/coedoba.json?language=es&access_token=pk.eyJ1IjoicGFibG9hcmNlIiwiYSI6ImNreWhwdnVsNDFsNW4ycWxrdmpvcXA1b2kifQ.DSPOKKZcGQxtdcwKM26xqA

@@ -1,3 +1,4 @@
+require('dotenv').config();
 require('colors');
 const inquirer = require('inquirer');
 const {
