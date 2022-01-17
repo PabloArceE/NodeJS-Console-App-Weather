@@ -16,7 +16,7 @@ class Busquedas {
     }
 
 
-    async ciudad(lugar){
+    async ciudades(lugar){
 
         try {
             
@@ -27,14 +27,13 @@ class Busquedas {
 
             const resp = await instance.get();
 
-            console.log(resp.data);
+            return resp.data.features.map(lugar => ({
+                id: lugar.id,
+                nombre: lugar.place_name,
+                lng: lugar.center[0],
+                lat: lugar.center[1]
+            }));
 
-
-            /* const resp = await axios.get('https://api.mapbox.com/geocoding/v5/mapbox.places/coedoba.json?language=es&access_token=pk.eyJ1IjoicGFibG9hcmNlIiwiYSI6ImNreWhwdnVsNDFsNW4ycWxrdmpvcXA1b2kifQ.DSPOKKZcGQxtdcwKM26xqA');
-            console.log(resp.data); */
-    
-            return [];
-            
         } catch (err) {
             return [];
         }

@@ -77,11 +77,36 @@ const confirmarSalir = async() => {
     return confirm;
 }
 
+const listarLugares = async( arr = []) => {
+
+    const choices = arr.map( (element, i) => {
+
+        const idx = `${i + 1}.`.cyan;
+
+        return {
+            value: element.id,
+            name: `${idx} ${element.nombre}`
+        }
+    });    
+
+    const question = {
+        type: 'list',
+        name: 'elementId',
+        message: 'Seleccione la ciudad',
+        choices
+    }
+
+    const {elementId} = await inquirer.prompt(question);
+
+    return elementId;
+}
+
 
 
 module.exports = {
     inquirerMenu,
     pausa,
     leerInput,
-    confirmarSalir
+    confirmarSalir,
+    listarLugares
 }
