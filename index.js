@@ -30,27 +30,35 @@ const main = async() => {
                     const lugares = await busquedas.ciudades(usrInput);
 
                     // seleccionar el lugar
-                    const seleccion = await listarLugares(lugares);
+                    const seleccion = await listarLugares(lugares);                    
 
                     // primeros datos
                     const lugarSeleccionado = lugares.find(lugar => lugar.id === seleccion);
-
+                    
+                    // guardar en historial
+                    busquedas.agregarHistorial(lugarSeleccionado.nombre)
+                    
                     // clima
+                    const clima = await busquedas.climaCiudad(lugarSeleccionado.lat, lugarSeleccionado.lon)        
                     
 
                     // mostrar resultado
                     console.log('\nInformación de la ciudad\n'.cyan);
-                    console.log('Ciudad: ', lugarSeleccionado.nombre.toString().green );
+                    console.log('Ciudad: ', lugarSeleccionado.nombre.green );
                     console.log('Lat: ', lugarSeleccionado.lat);
-                    console.log('Lng: ',lugarSeleccionado.lng);
-                    console.log('Temperatura: ',);
-                    console.log('Mínima: ',);
-                    console.log('Máxima: ','\n');
+                    console.log('Lon: ',lugarSeleccionado.lon);
+                    console.log('Clima: ', clima.desc.yellow);
+                    console.log('Temperatura: ', clima.temp);
+                    console.log('Mínima: ', clima.min);
+                    console.log('Máxima: ', clima.max,'\n');
                     
                     await pausa();
                     break;                    
                 case 2:
-                    console.log('Estas dentro del caso 2');
+                    busquedas.historial.forEach((ciudad, i) => {
+                        const idx = `${ i + 1}.`.green;
+                        console.log(`${idx} ${ciudad}`);
+                    });
                     await pausa();
                     break;          
             }
@@ -71,3 +79,6 @@ const main = async() => {
 }
 
 main();
+
+// Para ver las variables de entorno 
+// console.log(process.env)
