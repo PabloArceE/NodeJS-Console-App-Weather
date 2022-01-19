@@ -30,7 +30,8 @@ const main = async() => {
                     const lugares = await busquedas.ciudades(usrInput);
 
                     // seleccionar el lugar
-                    const seleccion = await listarLugares(lugares);                    
+                    const seleccion = await listarLugares(lugares);
+                    if(seleccion === 0) continue;                    
 
                     // primeros datos
                     const lugarSeleccionado = lugares.find(lugar => lugar.id === seleccion);
@@ -55,6 +56,9 @@ const main = async() => {
                     await pausa();
                     break;                    
                 case 2:
+
+                    
+
                     busquedas.historial.forEach((ciudad, i) => {
                         const idx = `${ i + 1}.`.green;
                         console.log(`${idx} ${ciudad}`);

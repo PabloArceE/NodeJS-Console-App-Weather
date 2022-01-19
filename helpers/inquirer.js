@@ -87,7 +87,12 @@ const listarLugares = async( arr = []) => {
             value: element.id,
             name: `${idx} ${element.nombre}`
         }
-    });    
+    });
+    
+    choices.unshift({
+        value: 0,
+        name: '0. '.cyan + 'Cancelar'
+    })
 
     const question = {
         type: 'list',
